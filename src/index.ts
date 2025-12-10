@@ -1,7 +1,25 @@
 import { Elysia } from "elysia";
+import { ip } from 'elysia-ip'
+import { headersRoute } from "./utils/headers";
+import { userAgentRoute } from "./utils/user_agent";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const ipRoute = new Elysia()
+  .use(ip())
+  .get("/ip", ({ ip }) => {
+    return ip ? ip : "Undifind"
+  })
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+export default new Elysia()
+  .use(ip())
+  .use(ipRoute)
+  .use(headersRoute)
+  .use(userAgentRoute)
+  .get("/", () => {
+    return {
+      pages: {
+        '/user-agent': 'view user-agent',
+        '/ip': 'get your ip',
+        '/headers': 'view your headers'
+      }
+    }
+  })

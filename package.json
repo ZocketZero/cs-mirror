@@ -1,14 +1,17 @@
 {
-  "name": "learn-elysia",
+  "name": "cs-mirror",
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "elysia": "latest",
+    "elysia-ip": "^1.0.10",
+    "js-yaml": "^4.1.1"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "bun-types": "latest"
   },
   "module": "src/index.js"
