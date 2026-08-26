@@ -6,7 +6,7 @@ import { getHeaderValue } from "./utils/headers";
 
 const ipRoute = new Elysia()
   .use(ip())
-  .get("/ip", ({ ip }) => {
+  .get("/ip", ({ ip }: { ip: string }) => {
     return ip ? ip : "Undifind"
   })
 
@@ -15,6 +15,7 @@ export default new Elysia()
   .use(ipRoute)
   .use(headersRoute)
   .use(userAgentRoute)
+  // @ts-ignore
   .get("/", ({ ip, request, query }) => {
     let header = getHeaderValue(Object.fromEntries(request.headers), undefined, query.format)
     return {
