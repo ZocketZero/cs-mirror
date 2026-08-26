@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "elysia": "latest",
-    "elysia-ip": "^1.0.10",
-    "js-yaml": "^4.1.1"
+    "elysia-ip": "^1.1.1",
+    "js-yaml": "^4.3.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
