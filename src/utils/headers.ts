@@ -1,7 +1,7 @@
 import yaml from "js-yaml";
 import { Elysia } from "elysia";
 
-function getHeaderValue(
+export function getHeaderValue(
   headers: { [key: string]: string },
   id: string | undefined,
   format: string | undefined
