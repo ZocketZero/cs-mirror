@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { ip } from 'elysia-ip'
+import { ip } from "elysia-ip"
 import { headersRoute } from "./utils/headers";
 import { userAgentRoute } from "./utils/user_agent";
 import { getHeaderValue } from "./utils/headers";
