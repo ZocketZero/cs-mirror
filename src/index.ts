@@ -3,6 +3,7 @@ import { ip } from "elysia-ip"
 import { headersRoute } from "./utils/headers";
 import { userAgentRoute } from "./utils/user_agent";
 import { getHeaderValue } from "./utils/headers";
+import { titleIpRoute } from "./utils/title-ip";
 
 const ipRoute = new Elysia()
   .use(ip())
@@ -15,6 +16,7 @@ export default new Elysia()
   .use(ipRoute)
   .use(headersRoute)
   .use(userAgentRoute)
+  .use(titleIpRoute)
   // @ts-ignore
   .get("/", ({ ip, request, query }) => {
     let header = getHeaderValue(Object.fromEntries(request.headers), undefined, query.format)
@@ -25,7 +27,8 @@ export default new Elysia()
       pages: {
         '/user-agent': 'view user-agent',
         '/ip': 'get your ip',
-        '/headers': 'view your headers'
+        '/headers': 'view your headers',
+        '/title-ip': 'show ip in title'
       }
     }
-  })
+  }).listen(4000)
