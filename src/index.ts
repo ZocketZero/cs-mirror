@@ -31,4 +31,4 @@ export default new Elysia()
         '/title-ip': 'show ip in title'
       }
     }
-  }).listen(4000)
+  })
