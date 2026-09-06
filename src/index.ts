@@ -18,9 +18,10 @@ export default new Elysia()
   .use(userAgentRoute)
   .use(titleIpRoute)
   // @ts-ignore
-  .get("/", ({ ip, request, query }) => {
+  .get("/", ({ ip, request, query, set }) => {
     let header = getHeaderValue(Object.fromEntries(request.headers), undefined, query.format)
-    return {
+    set.headers['content-type'] = "text/html"
+    return `<html><head><title>${ip}</title></head><body><pre>
       ip: ip,
       userAgent: request.headers.get('user-agent'),
       header,
@@ -30,5 +31,5 @@ export default new Elysia()
         '/headers': 'view your headers',
         '/title-ip': 'show ip in title'
       }
-    }
+    </pre></body></html>`
   })
